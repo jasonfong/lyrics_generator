@@ -29,7 +29,11 @@ def submit_line():
         )
 
     else:
-        return render_template('submit_line.html')
+        return render_template(
+            'submit_line.html',
+            social_types=Line.social_type_choices,
+            line_types=Line.line_type_choices,
+        )
 
 
 @web_blueprint.route('/view_lines', methods=['GET'])

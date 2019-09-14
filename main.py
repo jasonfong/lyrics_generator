@@ -10,9 +10,9 @@ app.register_blueprint(web_blueprint, url_prefix='/web')
 
 @app.route('/info')
 def hello():
-    return jsonify({
-        'routes': [repr(item) for item in app.url_map.iter_rules()],
-    })
+    return jsonify(
+        routes=[repr(item) for item in app.url_map.iter_rules()],
+    )
 
 
 if __name__ == '__main__':
