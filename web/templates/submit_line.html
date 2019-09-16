@@ -9,7 +9,13 @@
 <h1>Submit Line</h1>
 <form action="/web/submit_line" method="POST">
     Line: <input name="text"><br>
-    Line Number: <input name="line_number"><br>
+    Line Type:
+    <select name="line_type">
+        {% for choice in line_types %}
+            <option value="{{ choice }}">{{ choice }}</option>
+        {% endfor %}
+    </select>
+    <br>
     Social Type:
     <select name="social_type">
         {% for choice in social_types %}

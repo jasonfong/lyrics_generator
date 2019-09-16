@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Content Moderation</title>
+</head>
+
+<body>
+    <h1>Content Moderation</h1>
+
+    <table>
+        <th>
+            <td>Submitter</td>
+            <td>Line</td>
+            <td>Reference Line Number</td>
+        </th>
+        {% for line in lines %}
+            <tr>
+                <td>
+                    {{ line.social_type | default('None') }}:
+                    {{ line.social_id| default('None') }}
+                </td>
+                <td>line.text</td>
+                <td>line.line_type</td>
+            </tr>
+
+        {{ line.text }}<br>
+    {% endfor %}
+
+
+    </table>
+</body>
+
+</html>

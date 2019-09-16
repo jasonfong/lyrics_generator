@@ -40,3 +40,10 @@ def submit_line():
 def view_lines():
     lines = Line.get_all()
     return render_template('view_lines.html', lines=lines)
+
+
+
+@web_blueprint.route('/admin/moderate', methods=['GET'])
+def moderate():
+    lines = Line.get_unapproved()
+    return render_template('moderate.html', lines=lines)
