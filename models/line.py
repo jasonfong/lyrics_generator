@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import uuid
 
 from google.cloud import firestore
@@ -9,16 +11,18 @@ class Line:
     social_type_choices = ['instagram', 'facebook', 'twitter']
 
     def __init__(self, text=None, line_type=None, social_type=None,
-                 social_id=None, approved=False):
+                 social_id=None, status='pending'):
         self.db = firestore.Client()
         self.id = str(uuid.uuid4())
         self.text = text
         self.line_type = line_type
         self.social_type = social_type
         self.social_id = social_id
-        self.approved = approved
+        self.status = status
+        self.created = datetime.utcnow()
+        self.modified = datetime.utcnow()
 
-    
+
     @classmethod
     def get_all(cls):
         db = firestore.Client()
@@ -33,7 +37,7 @@ class Line:
         db = firestore.Client()
         return [
             item.to_dict()
-            for item in db.collection(cls.collection_name).where('approved', '==', False).stream()
+            for item in db.collection(cls.collection_name).where('status', '==', 'pending').stream()
         ]
 
 
@@ -45,4 +49,7 @@ class Line:
             'line_type': self.line_type,
             'social_type': self.social_type,
             'social_id': self.social_id,
+            'status': self.status,
+            'created': self.created,
+            'modified': datetime.utcnow(),
         })

@@ -8,26 +8,27 @@
 <body>
     <h1>Content Moderation</h1>
 
-    <table>
-        <th>
-            <td>Submitter</td>
-            <td>Line</td>
-            <td>Reference Line Number</td>
-        </th>
+    <table border="1">
+        <tr>
+            <th>Submitter</th>
+            <th>Line</th>
+            <th>Line Type</th>
+            <th>Action</th>
+        </tr>
         {% for line in lines %}
-            <tr>
-                <td>
-                    {{ line.social_type | default('None') }}:
-                    {{ line.social_id| default('None') }}
-                </td>
-                <td>line.text</td>
-                <td>line.line_type</td>
-            </tr>
-
-        {{ line.text }}<br>
-    {% endfor %}
-
-
+        <tr>
+            <td>
+                {{ line.social_type | default('None') }}:
+                {{ line.social_id| default('None') }}
+            </td>
+            <td>{{ line.text }}</td>
+            <td>{{ line.line_type }}</td>
+            <td>
+                <button>Accept</button>
+                <button>Reject</button>
+            </td>
+        </tr>
+        {% endfor %}
     </table>
 </body>
 
