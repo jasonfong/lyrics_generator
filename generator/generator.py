@@ -4,6 +4,9 @@ from models.line import Line
 
 
 class LyricsGenerator:
+    song_template = '{verse}\n\n{pre_chorus}\n\n{chorus}\n\n{pre_chorus}\n\n{chorus}\n\n{bridge}'
+
+
     def __init__(self):
         pass
 
@@ -31,3 +34,16 @@ class LyricsGenerator:
             'verse': self.get_verse(),
             'bridge': self.get_bridge(),
         }
+
+    
+    def generate_string(self):
+        generated = self.generate()
+
+        result = self.song_template.format(
+            pre_chorus=generated['pre-chorus'].text,
+            chorus=generated['chorus'].text,
+            verse=generated['verse'].text,
+            bridge=generated['bridge'].text,
+        )
+
+        return result

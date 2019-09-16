@@ -75,7 +75,13 @@ def moderate_action():
 def generate():
     generated = LyricsGenerator().generate()
 
-    return generated['chorus'].text
+    return render_template(
+        'generate.html',
+        pre_chorus=generated['pre-chorus'].text,
+        chorus=generated['chorus'].text,
+        verse=generated['verse'].text,
+        bridge=generated['bridge'].text,
+    )
 
 
 @web_blueprint.route('/landing', methods=['GET'])

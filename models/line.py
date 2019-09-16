@@ -61,13 +61,22 @@ class Line:
         db = firestore.Client()
         random_id = str(uuid.uuid4())
 
+        result = None
+
         qry = db.collection(cls.collection_name).where('id', '>=', random_id)
-        qry = qry.where('text', '>', '')
 
         for item in qry.stream():
-            return cls().populate(**item.to_dict())
+            result = cls().populate(**item.to_dict())
+            break
 
-        return None
+        if not result:
+            qry = db.collection(cls.collection_name).where('id', '<', random_id)
+
+            for item in qry.stream():
+                result = cls().populate(**item.to_dict())
+                break
+
+        return result
 
     
     def populate(self, **kwargs):
