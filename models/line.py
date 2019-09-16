@@ -63,7 +63,9 @@ class Line:
 
         result = None
 
-        qry = db.collection(cls.collection_name).where('id', '>=', random_id)
+        qry = db.collection(cls.collection_name)
+        qry = qry.where('line_type', '==', line_type)
+        qry = qry.where('id', '>=', random_id)
 
         for item in qry.stream():
             result = cls().populate(**item.to_dict())

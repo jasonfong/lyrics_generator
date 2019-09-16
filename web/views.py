@@ -19,6 +19,7 @@ def submit_line():
         data = request.form
         line_ref = Line(
             text=data.get('text'),
+            line_type=data.get('line_type'),
             social_type=data.get('social_type'),
             social_id=data.get('social_id'),
         )
