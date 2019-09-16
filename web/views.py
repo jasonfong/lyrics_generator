@@ -2,6 +2,8 @@ from flask import Blueprint, jsonify, render_template, request
 
 from models.line import Line
 
+from generator.generator import LyricsGenerator
+
 
 web_blueprint = Blueprint('web', __name__,
                           template_folder='templates')
@@ -67,6 +69,13 @@ def moderate_action():
         status=status,
         found=found,
     )
+
+
+@web_blueprint.route('/generate', methods=['GET'])
+def generate():
+    generated = LyricsGenerator().generate()
+
+    return generated['chorus'].text
 
 
 @web_blueprint.route('/landing', methods=['GET'])
