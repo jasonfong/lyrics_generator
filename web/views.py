@@ -54,6 +54,7 @@ def moderate():
 @web_blueprint.route('/admin/moderate_action', methods=['POST'])
 def moderate_action():
     data = request.get_json()
+
     status = data['status']
     line_id = data['line_id']
 
