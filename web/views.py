@@ -47,8 +47,11 @@ def moderate():
     lines = Line.get_unapproved()
     return render_template('moderate.html', lines=lines)
 
-
 @web_blueprint.route('/admin/moderate', methods=['GET'])
 def moderate_action():
     lines = Line.get_unapproved()
     return render_template('moderate.html', lines=lines)
+
+@web_blueprint.route('/landing', methods=['GET'])
+def landing():
+    return render_template('landing.html')
