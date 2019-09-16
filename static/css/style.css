@@ -1,8 +1,10 @@
 html {
 	font-family: 'Lato';
 	sans-serif;
-	background: #eee;
+	background-color: #b99cca;
 	background-image: url('../backgrounds/temp_bk_pur.png');
+	background-repeat: no-repeat;
+	background-size: cover;
 	padding: 1rem;
 }
 
