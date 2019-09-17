@@ -9,7 +9,10 @@
 <title>Let's write a song together!</title>
 </head>
 
-<body>
+<body class="center">
+<a href="https://www.oneinanarmy.org/" target="_blank"><img src="../static/images/oiaa-logo_purwht.png" style="width:135px;height:auto;border:0;"" title="One in an Army" alt="OIAA"></a>
+<font size="5">&nbsp;&nbsp; presents</font>
+
 <h1>Army's Promise</h1>
 <h2>Let's write a song together!</h2><br>
 Choose a verse in <a href="https://soundcloud.com/bangtan/firstjiminpresent">Jimin's Promise</a> and write new lyrics for it. <br><br>
@@ -17,26 +20,33 @@ We will approve your submission and <br>
 then you can see your lyrics in a randomly generated<br>
 ARMY's Promise song. <br>
 <hr>
-<iframe width="50%" height="130" scrolling="no" frameborder="no" allow="autoplay"
+<iframe width="60%" height="130" scrolling="no" frameborder="no" allow="autoplay"
 src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/551801490&color=%2355207d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
 </iframe>
 
-
-
 <form action="/web/submit_line" method="POST">
-    <div class="row">
-            <div class="column"><h3>Select a verse to rewrite:</h3>
-                    <select name="line_type">
+    <div class="container">
+        <div align="left" class="row">
+                <div class="col align-self-start">
+                    Select a verse to rewrite:<br>
+
+                    <select name="line_type" onchange="changeOrginalLyrics(this)">
                         {% for choice in line_types %}
                             <option value="{{ choice }}">{{ choice }}</option>
                         {% endfor %}
-                    </select> </div>
-            <div class="column"> <h3>Original Lyrics:</h3><br></div>
-    </div>
-    
-    <div class="form-group">
+                    </select>
+                </div>
+                <div id="originalLyrics" class="col align-self-start">
+                    Original Lyrics:<br>
+                    {% for line in chorus_lines %}
+                        {{line}}
+                    {% endfor %}
+                </div>
+        </div>
+        <div class="form-group">
             <label for="text"></label>
             <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="write your lyrics here"></textarea>
+        </div>
     </div>
 
     <br>
@@ -51,3 +61,56 @@ src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/55
 </body>
 
 </html>
+
+<script type="text/javascript">
+function changeOrginalLyrics(option) {
+    var originalLyricsDiv = document.getElementById("originalLyrics")
+
+    if (option.value == 'chorus') {
+        var originalLyrics = '';
+
+        var chorusLines = JSON.parse('{{ chorus_lines|tojson }}')
+
+        chorusLines.forEach(function(line) {
+            originalLyrics += '<br>' + line
+        });
+
+        originalLyricsDiv.innerHTML = "Original Lyrics:" + originalLyrics
+    }
+    else if (option.value == 'pre-chorus') {
+        var originalLyrics = '';
+
+        var preChorusLines = JSON.parse('{{ pre_chorus_lines|tojson }}')
+
+        preChorusLines.forEach(function(line) {
+            originalLyrics += '<br>' + line
+        });
+
+        originalLyricsDiv.innerHTML = "Original Lyrics:" + originalLyrics
+    }
+    else if (option.value == 'verse') {
+        var originalLyrics = '';
+
+        var verseLines = JSON.parse('{{ verse_lines|tojson }}')
+
+        verseLines.forEach(function(line) {
+            originalLyrics += '<br>' + line
+        });
+
+        originalLyricsDiv.innerHTML = "Original Lyrics:" + originalLyrics
+    }
+    else if (option.value == 'bridge') {
+        var originalLyrics = '';
+
+        var bridgeLines = JSON.parse('{{ bridge_lines|tojson }}')
+
+        bridgeLines.forEach(function(line) {
+            originalLyrics += '<br>' + line
+        });
+
+        originalLyricsDiv.innerHTML = "Original Lyrics:" + originalLyrics
+    }
+
+
+  }
+</script>

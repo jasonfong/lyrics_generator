@@ -73,7 +73,7 @@ nav ul li a, nav ul li span, header .action {
 
 .center {
 	margin: auto;
-	width: 75%;
+	max-width: 700px;
 	padding: 10px;
 	text-align: center
   }
