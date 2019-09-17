@@ -1,5 +1,4 @@
 from datetime import datetime
-
 import uuid
 
 from google.cloud import firestore
@@ -8,7 +7,7 @@ from google.cloud import firestore
 class Line:
     collection_name = 'lines'
     line_type_choices = ['chorus', 'pre-chorus', 'verse', 'bridge']
-    social_type_choices = ['instagram', 'facebook', 'twitter']
+    social_type_choices = ['instagram', 'twitter']
     status_choices = ['accepted', 'rejected', 'pending']
 
 
@@ -57,11 +56,34 @@ class Line:
         ]
 
     
+    @classmethod
+    def get_random(cls, line_type):
+        db = firestore.Client()
+        random_id = str(uuid.uuid4())
+
+        result = None
+
+        qry = db.collection(cls.collection_name)
+        qry = qry.where('line_type', '==', line_type)
+        qry = qry.where('id', '>=', random_id)
+
+        for item in qry.stream():
+            result = cls().populate(**item.to_dict())
+            break
+
+        if not result:
+            qry = db.collection(cls.collection_name).where('id', '<', random_id)
+
+            for item in qry.stream():
+                result = cls().populate(**item.to_dict())
+                break
+
+        return result
+
+    
     def populate(self, **kwargs):
         for key, val in kwargs.items():
-            print(key)
             if hasattr(self, key):
-                print("\tsetting")
                 setattr(self, key, val)
         return self
 

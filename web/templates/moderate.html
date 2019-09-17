@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 <head>
 <meta charset="UTF-8">
 <title>Content Moderation</title>
@@ -16,16 +18,17 @@
             <th>Action</th>
         </tr>
         {% for line in lines %}
-        <tr>
+        <tr id={{ line.id }}>
             <td>
                 {{ line.social_type | default('None') }}:
                 {{ line.social_id| default('None') }}
             </td>
             <td>{{ line.text }}</td>
             <td>{{ line.line_type }}</td>
+            <td>{{ line.status| default('None') }}</td>
             <td>
-                <button>Accept</button>
-                <button>Reject</button>
+                <button data-id="{{ line.id }}" id="acceptedButton">Accept</button>
+                <button data-id="{{ line.id }}" id="rejectedButton">Reject</button>
             </td>
         </tr>
         {% endfor %}

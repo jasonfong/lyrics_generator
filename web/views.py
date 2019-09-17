@@ -2,6 +2,8 @@ from flask import Blueprint, jsonify, render_template, request
 
 from models.line import Line
 
+from generator.generator import LyricsGenerator
+
 
 web_blueprint = Blueprint('web', __name__,
                           template_folder='templates')
@@ -17,6 +19,7 @@ def submit_line():
         data = request.form
         line_ref = Line(
             text=data.get('text'),
+            line_type=data.get('line_type'),
             social_type=data.get('social_type'),
             social_id=data.get('social_id'),
         )
@@ -51,6 +54,7 @@ def moderate():
 @web_blueprint.route('/admin/moderate_action', methods=['POST'])
 def moderate_action():
     data = request.get_json()
+
     status = data['status']
     line_id = data['line_id']
 
@@ -66,6 +70,19 @@ def moderate_action():
         id=line_id,
         status=status,
         found=found,
+    )
+
+
+@web_blueprint.route('/generate', methods=['GET'])
+def generate():
+    generated = LyricsGenerator().generate()
+
+    return render_template(
+        'generate.html',
+        pre_chorus=generated['pre-chorus'].text,
+        chorus=generated['chorus'].text,
+        verse=generated['verse'].text,
+        bridge=generated['bridge'].text,
     )
 
 
