@@ -3,7 +3,7 @@ html {
 	background-color: #b99cca;
 	background-image: url('../backgrounds/temp_bk_pur.png');
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: contain;
 	padding: 1rem;
 }
 
@@ -67,12 +67,18 @@ nav ul li a, nav ul li span, header .action {
 	padding: 0.5rem;
 }
 
+input, select {
+	font-size: 20px;
+	height: 50px;
+	width: 250px;
+}
+
 .content {
 	padding: 0 1rem 1rem;
 }
 
 .center {
-	margin: auto;
+	margin: 5rem auto;
 	max-width: 700px;
 	padding: 10px;
 	text-align: center
