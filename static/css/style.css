@@ -1,6 +1,5 @@
 html {
-	font-family: 'Lato';
-	sans-serif;
+	font-family: 'Lato', sans-serif;
 	background-color: #b99cca;
 	background-image: url('../backgrounds/temp_bk_pur.png');
 	background-repeat: no-repeat;
@@ -16,19 +15,27 @@ body {
 }
 
 h1 {
-	font-family: serif;
+	font-family: 'DarkLarch';
 	background: none;
 	color: #FFFFFF;
+	font-size: 65px;
 	margin: 1rem 0;
+}
+h2 {
+	background: none;
+	color: #FFFFFF;
+	font-size: 35px;
+	margin: 0;
 }
 
 a {
-	color: #377ba8;
+	color: #55207d;
 }
 
 hr {
 	border: none;
 	border-top: 1px solid lightgray;
+	width: 75%
 }
 
 nav {
@@ -63,6 +70,13 @@ nav ul li a, nav ul li span, header .action {
 .content {
 	padding: 0 1rem 1rem;
 }
+
+.center {
+	margin: auto;
+	max-width: 700px;
+	padding: 10px;
+	text-align: center
+  }
 
 .content > header {
 	border-bottom: 1px solid lightgray;
@@ -128,22 +142,40 @@ nav ul li a, nav ul li span, header .action {
 	resize: vertical;
 }
 
-button, input, optgroup, select, textarea {
+input, optgroup, select, textarea {
 	border-radius: 8px;
 }
 
-input.danger {
-	color: #cc2f2e;
-}
-
-input[type=submit]{
+button {
 	align-self: start;
 	background-color: #551f7d;
 	color: #FFFFFF;
 	font-family: 'DarkLarch';
-	min-width: 10em;
-	padding: .5em;
+	font-size: 30px;
+	min-width: 8em;
+	padding: .3em;
+	margin: 15px;
 	border-radius: 20px;
+	outline-style: none;
+	border-style: none;
+	box-shadow: 0px 0px 0px 3px rgba(0,0,0,0.1);
+}
+
+button.donatebutton {
+	align-self: start;
+	background-color: #f68931;
+	color: #FFFFFF;
+	font-family: 'Lato', sans-serif;
+	font-size: 20px;
+	min-width: 8em;
+	padding: .3em;
+	margin: 15px;
+	border-radius: 20px;
+	box-shadow: 0px 0px 0px 2px rgba(0,0,0);
+}
+
+input.danger {
+	color: #cc2f2e;
 }
 
 @font-face {
