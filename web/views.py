@@ -1,4 +1,5 @@
-from flask import Blueprint, jsonify, render_template, request
+from flask import (
+    Blueprint, jsonify, render_template, redirect, request, url_for)
 
 from models.line import Line
 
@@ -7,6 +8,12 @@ from generator.generator import LyricsGenerator
 
 web_blueprint = Blueprint('web', __name__,
                           template_folder='templates')
+
+
+@web_blueprint.route('/')
+def index():
+    return redirect(url_for('web.landing'))
+
 
 @web_blueprint.route('/hello')
 def hello():

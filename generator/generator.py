@@ -29,10 +29,10 @@ class LyricsGenerator:
 
     def generate(self):
         return {
-            'chorus': self.get_chorus(),
-            'pre-chorus': self.get_pre_chorus(),
-            'verse': self.get_verse(),
-            'bridge': self.get_bridge(),
+            'chorus': self.get_chorus() or Line(),
+            'pre-chorus': self.get_pre_chorus() or Line(),
+            'verse': self.get_verse() or Line(),
+            'bridge': self.get_bridge() or Line(),
         }
 
     

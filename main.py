@@ -1,11 +1,16 @@
 import json
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, redirect, url_for
 from web.views import web_blueprint
 
 
 app = Flask(__name__)
 app.register_blueprint(web_blueprint, url_prefix='/web')
+
+
+@app.route('/')
+def index():
+    return redirect(url_for('web.landing'))
 
 
 @app.route('/info')
