@@ -1,4 +1,5 @@
 flask
+flask-basicauth
 google-cloud-storage
 google-cloud-firestore
 requests

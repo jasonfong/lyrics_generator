@@ -11,6 +11,7 @@ cachetools==3.1.1         # via google-auth
 certifi==2019.6.16        # via requests
 chardet==3.0.4            # via requests
 click==7.0                # via flask, pip-tools
+flask-basicauth==0.2.0
 flask==1.1.1
 google-api-core[grpc]==1.14.2  # via google-cloud-core, google-cloud-firestore
 google-auth==1.6.3        # via google-api-core, google-cloud-storage
