@@ -3,8 +3,8 @@
 
 SECRET_KEY = b'not_a_secret'
 
-BASIC_AUTH_USERNAME = 'not_a_username'
-BASIC_AUTH_PASSWORD = 'not_a_password'
+BASIC_AUTH_USERNAME = 'admin'
+BASIC_AUTH_PASSWORD = 'abc123'
 
 try:
     from config_local import *
