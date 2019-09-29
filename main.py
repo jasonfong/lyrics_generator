@@ -19,6 +19,10 @@ basic_auth = BasicAuth(app)
 def index():
     return redirect(url_for('web.landing'))
 
+@app.route('/confirmation')
+def confirmation():
+    return render_template('confirmation.html')
+
 
 @app.route('/info')
 def info():
