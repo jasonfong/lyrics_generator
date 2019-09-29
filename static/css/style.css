@@ -1,12 +1,22 @@
+html::before {
+  content: ' ';
+  display: block;
+  background-image: url('../backgrounds/temp_bk_pur.png');
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  z-index: -10; // This is pretty important.
+}
+
 html {
 	font-family: 'Lato';
 	font-variant: none;
-	background-color: #b99cca;
-	background-image: url('../backgrounds/temp_bk_pur.png');
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-    background-size: 100% auto;
-	padding: 1rem;
 }
 
 body {
@@ -82,7 +92,7 @@ input, select {
 
 .center {
 	margin: 5rem auto;
-	max-width: 35%;
+	max-width: 40%;
 	padding: 10px;
 	text-align: center
   }
