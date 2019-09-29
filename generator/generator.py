@@ -1,12 +1,10 @@
 from random import random
 
 from models.line import Line
+from models.song import Song
 
 
 class LyricsGenerator:
-    song_template = '{verse}\n\n{pre_chorus}\n\n{chorus}\n\n{pre_chorus}\n\n{chorus}\n\n{bridge}'
-
-
     def __init__(self):
         pass
 
@@ -28,22 +26,17 @@ class LyricsGenerator:
 
 
     def generate(self):
-        return {
-            'chorus': self.get_chorus() or Line(),
-            'pre-chorus': self.get_pre_chorus() or Line(),
-            'verse': self.get_verse() or Line(),
-            'bridge': self.get_bridge() or Line(),
-        }
+        chorus = self.get_chorus() or Line()
+        pre_chorus = self.get_pre_chorus() or Line()
+        verse = self.get_verse() or Line()
+        bridge = self.get_bridge() or Line()
 
-    
-    def generate_string(self):
-        generated = self.generate()
-
-        result = self.song_template.format(
-            pre_chorus=generated['pre-chorus'].text,
-            chorus=generated['chorus'].text,
-            verse=generated['verse'].text,
-            bridge=generated['bridge'].text,
+        song = Song(
+            chorus_id=chorus.id,
+            pre_chorus_id=pre_chorus.id,
+            verse_id=verse.id,
+            bridge_id=bridge.id,
         )
+        song.save()
 
-        return result
+        return song

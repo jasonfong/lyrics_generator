@@ -4,6 +4,7 @@ from flask import (
 import requests
 
 from models.line import Line
+from models.song import Song
 from generator.generator import LyricsGenerator
 
 
@@ -66,12 +67,30 @@ def generate():
 
     generated = LyricsGenerator().generate()
 
+    return redirect(url_for('web.song', song_id=generated.id))
+
+
+@web_blueprint.route('/song/<song_id>', methods=['GET'])
+def song(song_id):
+    if not current_app.config['GENERATE_ENABLED']:
+        return redirect(url_for('web.landing'))
+
+    song = Song.get(song_id)
+
+    if not song:
+        return redirect(url_for('web.landing'))
+
+    pre_chorus = Line.get(song.pre_chorus_id)
+    chorus = Line.get(song.chorus_id)
+    verse = Line.get(song.verse_id)
+    bridge = Line.get(song.bridge_id)
+
     return render_template(
         'generate.html',
-        pre_chorus=generated['pre-chorus'],
-        chorus=generated['chorus'],
-        verse=generated['verse'],
-        bridge=generated['bridge'],
+        pre_chorus=pre_chorus,
+        chorus=chorus,
+        verse=verse,
+        bridge=bridge,
     )
 
 
