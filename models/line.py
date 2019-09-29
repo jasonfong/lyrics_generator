@@ -10,7 +10,7 @@ class Line:
     social_type_choices = ['instagram', 'twitter']
     status_choices = ['accepted', 'rejected', 'pending']
 
-    bridge  =['Now promise me, oh, oh', 'Several times a day, oh, oh', 'Even if you feel that you are alone, oh, oh', "Don't throw yourself away, oh, oh", 'Oh, oh, oh, oh, hold on for a moment', 'Intertwine our pinkies', 'And promise me now, oh, oh, oh, oh']
+    bridge = ['Now promise me, oh, oh', 'Several times a day, oh, oh', 'Even if you feel that you are alone, oh, oh', "Don't throw yourself away, oh, oh", 'Oh, oh, oh, oh, hold on for a moment', 'Intertwine our pinkies', 'And promise me now, oh, oh, oh, oh']
     chorus = ['I want you to be your light, baby', 'You should be your light', "So you won't hurt anymore, so you can smile more", 'I want you to be your night, baby', 'You could be your night', "I'll be honest with you tonight"]
     pre_chorus = ["You're hurting too 'cause you're mine", 'I just want to blow your mind', "You're only drifting further away like this", "I say that it's all fine", "The truth is that's a lie"]
     verse = ['I sit alone, slumped down', 'And I break myself down with these thoughts', 'You probably don’t even know', 'When you started hurting me']
@@ -56,7 +56,7 @@ class Line:
         db = firestore.Client()
         return [
             cls().populate(**item.to_dict())
-            for item in db.collection(cls.collection_name).where('status', '==', 'pending').stream()
+            for item in db.collection(cls.collection_name).where('status', '==', 'pending').limit(50).stream()
         ]
 
     
