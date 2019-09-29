@@ -20,7 +20,7 @@ $( document ).ready(function() {
   }
 
   $( "#acceptedButton" ).click(function(){
-    getData(this.dataset.id, "accpeted");
+    getData(this.dataset.id, "accepted");
   });
 
   $( "#rejectedButton" ).click(function(){

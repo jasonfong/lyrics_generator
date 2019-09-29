@@ -1,16 +1,17 @@
-from flask import Blueprint, jsonify, render_template, request
+from flask import (
+    Blueprint, jsonify, render_template, redirect, request, url_for)
 
 from models.line import Line
-
 from generator.generator import LyricsGenerator
 
 
 web_blueprint = Blueprint('web', __name__,
                           template_folder='templates')
 
-@web_blueprint.route('/hello')
-def hello():
-    return 'hello from the blueprint'
+
+@web_blueprint.route('/')
+def index():
+    return redirect(url_for('web.landing'))
 
 
 @web_blueprint.route('/submit_line', methods=['GET', 'POST'])
@@ -51,35 +52,6 @@ def submit_line():
 def view_lines():
     lines = Line.get_all()
     return render_template('view_lines.html', lines=lines)
-
-
-@web_blueprint.route('/admin/moderate', methods=['GET'])
-def moderate():
-    lines = Line.get_unapproved()
-    return render_template('moderate.html', lines=lines)
-
-
-@web_blueprint.route('/admin/moderate_action', methods=['POST'])
-def moderate_action():
-    data = request.get_json()
-
-    status = data['status']
-    line_id = data['line_id']
-
-    line = Line.get(line_id)
-    found = False
-
-    if line:
-        line.status = status
-        line.save()
-        found = True
-
-    return jsonify(
-        id=line_id,
-        status=status,
-        found=found,
-    )
-
 
 @web_blueprint.route('/generate', methods=['GET'])
 def generate():

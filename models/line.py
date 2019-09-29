@@ -62,23 +62,26 @@ class Line:
     
     @classmethod
     def get_random(cls, line_type):
+        """Get a random Line with an approved status."""
         db = firestore.Client()
         random_id = str(uuid.uuid4())
 
         result = None
 
-        qry = db.collection(cls.collection_name)
-        qry = qry.where('line_type', '==', line_type)
-        qry = qry.where('id', '>=', random_id)
+        base_qry = db.collection(cls.collection_name)
+        base_qry = base_qry.where('line_type', '==', line_type)
+        base_qry = base_qry.where('status', '==', 'accepted')
 
-        for item in qry.stream():
+        gte_qry = base_qry.where('id', '>=', random_id)
+
+        for item in gte_qry.stream():
             result = cls().populate(**item.to_dict())
             break
 
         if not result:
-            qry = db.collection(cls.collection_name).where('id', '<', random_id)
+            lt_qry = base_qry.where('id', '<', random_id)
 
-            for item in qry.stream():
+            for item in lt_qry.stream():
                 result = cls().populate(**item.to_dict())
                 break
 
