@@ -23,10 +23,6 @@ def submit_line():
             line_type=data.get('line_type'),
             social_type=data.get('social_type'),
             social_id=data.get('social_id'),
-            chorus_lines=data.get('chorus'),
-            pre_chorus_lines=data.get('pre_chorus'),
-            verse_lines=data.get('verse'),
-            bridge_lines=data.get('bridge'),
         )
         line_ref.save()
         return render_template(

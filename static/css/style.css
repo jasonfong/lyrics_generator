@@ -1,16 +1,18 @@
 html {
-	font-family: 'Lato', sans-serif;
+	font-family: 'Lato';
+	font-variant: none;
 	background-color: #b99cca;
 	background-image: url('../backgrounds/temp_bk_pur.png');
 	background-repeat: no-repeat;
-	background-size: contain;
+	background-attachment: fixed;
+    background-size: 100% auto;
 	padding: 1rem;
 }
 
 body {
-	color: #FFFFFF;
 	background-color: transparent;
-	max-width: 960px;
+	color: #FFFFFF;
+	font-family: 'Lato';
 	margin: 0 auto;
 }
 
@@ -68,9 +70,10 @@ nav ul li a, nav ul li span, header .action {
 }
 
 input, select {
+	border: none;
 	font-size: 20px;
 	height: 50px;
-	width: 250px;
+	width: 100%;
 }
 
 .content {
@@ -79,7 +82,7 @@ input, select {
 
 .center {
 	margin: 5rem auto;
-	max-width: 700px;
+	max-width: 35%;
 	padding: 10px;
 	text-align: center
   }
@@ -146,6 +149,17 @@ input, select {
 .content textarea {
 	min-height: 12em;
 	resize: vertical;
+}
+
+.original-lyrics {
+	font-family: 'Lato';
+	font-size: 12pt;
+}
+
+.generate-hr {
+	border: none;
+    border-top: 2px solid white;
+    width: 100%;
 }
 
 input, optgroup, select, textarea {

@@ -31,10 +31,10 @@ ARMY's Promise song. <br>
 src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/551801490&color=%2355207d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
 </iframe>
 
-<form action="/web/submit_line" method="POST">
+<form action="/web/submit_line" method="POST" id="form1">
     <div class="container">
         <div align="left" class="row">
-                <div class="col align-self-start">
+                <div class="col align-self-center">
                     Select a verse to rewrite:<br>
 
                     <select name="line_type" onchange="changeOrginalLyrics(this)">
@@ -43,11 +43,15 @@ src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/55
                         {% endfor %}
                     </select>
                 </div>
-                <div id="originalLyrics" class="col align-self-start" style="min-height:200px">
-                    Original Lyrics:<br>
-                    {% for line in chorus_lines %}
-                        {{line}}
-                    {% endfor %}
+                <div class="align-self-start col original-lyrics">
+                    <div class="row">
+                        <font size="4">Original Lyrics:<br></font>
+                    </div>
+                    <div id="originalLyrics" class="row">
+                        {% for line in chorus_lines %}
+                            {{line}}<br>
+                        {% endfor %}
+                    </div>
                 </div>
         </div>
         <div class="form-group">
@@ -57,16 +61,25 @@ src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/55
     </div>
 
     <br>
-    Social Media Handle:
-    <select name="social_type">
-        {% for choice in social_types %}
-            <option value="{{ choice }}">{{ choice }}</option>
-        {% endfor %}
-    </select>
-    <input name="social_id"><br>
+    <div class="container">
+        <div align="left" class="row">
+            <div class="col-sm-8 align-self-center">
+                Social Media Handle:<br>
+                <select name="social_type">
+                    {% for choice in social_types %}
+                        <option value="{{ choice }}">{{ choice }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-sm-3 align-self-center">
+                <input name="social_id"><br>
+            </div>
+        </div>
+    </div>
 </form>
 
-<button type="button">Submit Lyrics</button>
+<button type="submit" form="form1" value="Submit">Submit Lyrics</button>
 <br>
 
 <hr style="border: 1px solid white;margin-bottom:2rem;margin-top:3rem;">
@@ -104,11 +117,11 @@ function changeOrginalLyrics(option) {
     }
 
     originalLyricsArray.forEach(function(line) {
-        originalLyrics += '<br>' + line
+        originalLyrics += line + '<br>'
     });
 
     if (originalLyrics) {
-        originalLyricsDiv.innerHTML = "Original Lyrics:" + originalLyrics
+        originalLyricsDiv.innerHTML = originalLyrics
     }
 }
 </script>

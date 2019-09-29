@@ -1,21 +1,46 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 <head>
 <meta charset="UTF-8">
-<title>Army's Promise</title>
+<title>ARMY's Song</title>
 </head>
 
+<body class="center">
+<a href="https://www.oneinanarmy.org/" target="_blank"><img src="../static/images/oiaa-logo_purwht.png" style="width:135px;height:auto;border:0;"" title="One in an Army" alt="OIAA"></a>
+<font size="5">&nbsp;&nbsp; presents</font>
+
+<h1>ARMY's Song</h1>
+
 <body>
-<pre>{{ verse }}</pre>
-<pre>{{ pre_chorus }}</pre>
-<pre>{{ chorus }}</pre>
-<pre>{{ pre_chorus }}</pre>
-<pre>{{ chorus }}</pre>
-<pre>{{ bridge }}</pre>
+
+<font size="5">
+<div style="text-align: left; white-space: pre-line;">
+	[Verse 1]
+	{{ verse }}<br>
+	[Pre-Chorus 1]
+	{{ pre_chorus }}<br>
+	[Chorus 1]
+	{{ chorus }}<br>
+	[Pre-Chorus 2]
+	{{ pre_chorus }}<br>
+	[Chorus 2]
+	{{ chorus }}<br>
+	[Bridge]
+	{{ bridge }}<br>
+</div>
+</font>
+
+<hr class="generate-hr">
+<hr class="generate-hr">
+
+<font size="4">Support Jimin's Birthday Campaign <b>#PromiseWithJimin</b> <br> <br></font>
+
+<a href="https://zaatarngo.org/" target="_blank"><img src="../static/images/zaatar_logo.png" style="width:250px;height:auto;border:0;"" title="Za'atar NGO" alt="ZNGO"></a><br>
+<button type="button" class="donatebutton">Donate Here</button>
+
 </body>
 
 </html>
