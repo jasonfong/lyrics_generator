@@ -25,12 +25,7 @@ def submit_line():
             social_id=data.get('social_id'),
         )
         line_ref.save()
-        return render_template(
-            'accepted_line.html',
-            text=line_ref.text,
-            social_type=line_ref.social_type,
-            social_id=line_ref.social_id,
-        )
+        return render_template('confirmation.html')
 
     else:
         return render_template(
