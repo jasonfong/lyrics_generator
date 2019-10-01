@@ -55,10 +55,10 @@ def generate():
 
     return render_template(
         'generate.html',
-        pre_chorus=generated['pre-chorus'].text,
-        chorus=generated['chorus'].text,
-        verse=generated['verse'].text,
-        bridge=generated['bridge'].text,
+        pre_chorus=generated['pre-chorus'],
+        chorus=generated['chorus'],
+        verse=generated['verse'],
+        bridge=generated['bridge'],
     )
 
 
