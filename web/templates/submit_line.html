@@ -3,100 +3,113 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
-
 <head>
-<meta charset="UTF-8">
-<title>Let's write a song together!</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <title>Let's write a song together!</title>
 </head>
 
-<body class="center">
-<a href="https://www.oneinanarmy.org/" target="_blank"><img src="../static/images/oiaa-logo_purwht.png" style="width:135px;height:auto;border:0;" title="One in an Army" alt="OIAA"></a>
-<font size="5">&nbsp;&nbsp; presents</font>
+<body>
+  <div class="container-fluid">
+    <div class="row d-flex flex-column align-items-center" style="margin-top: 5em;">
+      <div class="col-12 col-sm-7 col-md-6 col-lg-5 text-center">
+        <a href="https://www.oneinanarmy.org/" target="_blank"><img src="../static/images/oiaa-logo_purwht.png" class="img-fluid" style="width: 135px;" title="One in an Army" alt="OIAA"></a>
+        <font size="5">&nbsp;&nbsp; presents</font>
 
-<br>
-<img src="../static/images/armypromise_logo.png" style="height:80px;height:auto;border:0;" title="Army Promise" alt="OIAA">
+        <br>
+        <img src="../static/images/armypromise_logo.png" class="img-fluid" title="Army Promise" alt="OIAA">
 
-<div style="font-size: 27px; font-weight: 500">
-Let's write a song together!<br>
-</div>
-<div style="font-size: 20px;">
-Choose a verse in <a href="https://soundcloud.com/bangtan/firstjiminpresent">Jimin's Promise</a> and write new lyrics for it. <br><br>
-We will approve your submission and <br>
-then you can see your lyrics in a randomly generated<br>
-ARMY's Promise song. <br>
-</div>
-
-<hr style="border: 1px solid white;">
-
-<iframe width="60%" height="130" scrolling="no" frameborder="no" allow="autoplay" style="margin: 2rem;"
-src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/551801490&color=%2355207d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
-</iframe>
-
-<form action="/web/submit_line" method="POST" id="form1">
-    <div class="container">
-        <div align="left" class="row">
-                <div class="col align-self-center">
-                    Select a verse to rewrite:<br>
-
-                    <select name="line_type" onchange="changeOrginalLyrics(this)">
-                        {% for choice in line_types %}
-                            <option value="{{ choice }}">{{ choice }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="col align-self-start original-lyrics">
-                    <div class="row">
-                        <font size="4">Original Lyrics:<br></font>
-                    </div>
-                    <div id="originalLyrics" class="row">
-                        {% for line in chorus_lines %}
-                            {{line}}<br>
-                        {% endfor %}
-                    </div>
-                </div>
+        <div style="font-size: 27px; font-weight: 500">
+          Let's write a song together!<br>
         </div>
-        <div class="form-group">
-            <label for="text"></label>
-            <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="write your lyrics here"></textarea>
+        <div style="font-size: 20px;">
+          Choose a verse in <a href="https://soundcloud.com/bangtan/firstjiminpresent">Jimin's Promise</a> and write new lyrics for it. <br><br>
+          We will approve your submission and <br>
+          then you can see your lyrics in a randomly generated<br>
+          ARMY's Promise song. <br>
         </div>
-    </div>
 
-    <br>
-    <div class="container">
-        <div align="left" class="row">
-            <div class="col">
-                Social Media Handle:<br>
-                <select name="social_type" style="width: 30%">
-                    {% for choice in social_types %}
-                        <option value="{{ choice }}">{{ choice }}</option>
+        <hr style="border: 1px solid white;">
+
+        <iframe width="60%" height="130" scrolling="no" frameborder="no" allow="autoplay" style="margin: 2rem;"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/551801490&color=%2355207d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+        </iframe>
+
+        <form action="/web/submit_line" method="POST" id="form1">
+          <div class="container">
+            <div align="left" class="row">
+              <div class="col align-self-center">
+                <div>Select a verse to rewrite:</div>
+                <div class="form-group">
+                  <select class="form-control" name="line_type" onchange="changeOrginalLyrics(this)">
+                    {% for choice in line_types %}
+                    <option value="{{ choice }}">{{ choice }}</option>
                     {% endfor %}
-                </select>
-
-                <input name="social_id" style="width: 69%"><br>
-                (this will be displayed in the credits when the lyrics are used)
+                  </select>
+                </div>
+              </div>
+              <div class="col align-self-start original-lyrics">
+                <div class="row">
+                  <font size="4">Original Lyrics:<br></font>
+                </div>
+                <div id="originalLyrics" class="row">
+                  {% for line in chorus_lines %}
+                  {{line}}<br>
+                  {% endfor %}
+                </div>
+              </div>
             </div>
+            <div class="form-group">
+              <label for="text"></label>
+              <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="write your lyrics here"></textarea>
+            </div>
+          </div>
+
+          <br>
+          <div class="container">
+            <div align="left" class="row">
+              <div class="col">
+                <div class="form-group">
+                  <div>Social Media Handle:</div>
+                </div>
+                <div class="form-group">
+                  <select class="form-control" name="social_type" style="width: 30%">
+                    {% for choice in social_types %}
+                    <option value="{{ choice }}">{{ choice }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="form-group">
+                  <input class="form-control" name="social_id" style="width: 69%"><br>
+                  <span>(this will be displayed in the credits when the lyrics are used)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div>
+          <button type="submit" form="form1" value="Submit">Submit Lyrics</button>
         </div>
+
+        <hr style="border: 1px solid white;margin-bottom:2rem;margin-top:3rem;">
+
+        Also, support Jimin's Birthday Campaign <br>
+        for a safe space for young refugees to rest, <br>
+        learn, feel empowered and grow! <b>#HomeWithJimin</b> <br> <br>
+
+        <a href="https://zaatarngo.org/" target="_blank"><img src="../static/images/zaatar_logo.png" style="width:250px;height:auto;border:0;" title="Za'atar NGO" alt="ZNGO"></a><br>
+        <button type="button" class="donatebutton">Donate Here</button>
+
+      </div>
     </div>
-</form>
-
-<button type="submit" form="form1" value="Submit">Submit Lyrics</button>
-<br>
-
-<hr style="border: 1px solid white;margin-bottom:2rem;margin-top:3rem;">
-
-Also, support Jimin's Birthday Campaign <br>
-for a safe space for young refugees to rest, <br>
-learn, feel empowered and grow! <b>#HomeWithJimin</b> <br> <br>
-
-<a href="https://zaatarngo.org/" target="_blank"><img src="../static/images/zaatar_logo.png" style="width:250px;height:auto;border:0;" title="Za'atar NGO" alt="ZNGO"></a><br>
-<button type="button" class="donatebutton">Donate Here</button>
-
+  </div>
 </body>
 
 </html>
 
 <script type="text/javascript">
-function changeOrginalLyrics(option) {
+  function changeOrginalLyrics(option) {
     var originalLyricsDiv = document.getElementById("originalLyrics")
 
     var originalLyrics = '';
@@ -104,24 +117,21 @@ function changeOrginalLyrics(option) {
     var originalLyricsArray;
 
     if (option.value == 'chorus') {
-        originalLyricsArray = JSON.parse('{{ chorus_lines|tojson }}')
-    }
-    else if (option.value == 'pre-chorus') {
-        originalLyricsArray = JSON.parse('{{ pre_chorus_lines|tojson }}')
-    }
-    else if (option.value == 'verse') {
-        originalLyricsArray = JSON.parse('{{ verse_lines|tojson }}')
-    }
-    else if (option.value == 'bridge') {
-        originalLyricsArray = JSON.parse('{{ bridge_lines|tojson }}')
+      originalLyricsArray = JSON.parse('{{ chorus_lines|tojson }}')
+    } else if (option.value == 'pre-chorus') {
+      originalLyricsArray = JSON.parse('{{ pre_chorus_lines|tojson }}')
+    } else if (option.value == 'verse') {
+      originalLyricsArray = JSON.parse('{{ verse_lines|tojson }}')
+    } else if (option.value == 'bridge') {
+      originalLyricsArray = JSON.parse('{{ bridge_lines|tojson }}')
     }
 
     originalLyricsArray.forEach(function(line) {
-        originalLyrics += line + '<br>'
+      originalLyrics += line + '<br>'
     });
 
     if (originalLyrics) {
-        originalLyricsDiv.innerHTML = originalLyrics
+      originalLyricsDiv.innerHTML = originalLyrics
     }
-}
+  }
 </script>
