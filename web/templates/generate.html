@@ -38,6 +38,33 @@
 						</div>
 					</font>
 
+					<div style="text-align: left; margin-bottom: 3rem; display: flex; flex-direction: column;">
+						<div style="font-family: 'DarkLarch'; font-size: 28px;">Song was co-written by:</div>
+						{% if pre_chorus.social_type == 'instagram' %}
+							<a>@{{ pre_chorus.social_id }}</a>
+						{% elif pre_chorus.social_type == 'twitter' %}
+							<a>@{{ pre_chorus.social_id }}</a>
+						{% endif %}
+
+						{% if chorus.social_type == 'instagram' %}
+							<a>@{{ chorus.social_id }}</a>
+						{% elif chorus.social_type == 'twitter' %}
+							<a>@{{ chorus.social_id }}</a>
+						{% endif %}
+
+						{% if verse.social_type == 'instagram' %}
+							<a>@{{ verse.social_id }}</a>
+						{% elif verse.social_type == 'twitter' %}
+							<a>@{{ verse.social_id }}</a>
+						{% endif %}
+
+						{% if bridge.social_type == 'instagram' %}
+							<a>@{{ bridge.social_id }}</a>
+						{% elif bridge.social_type == 'twitter' %}
+							<a>@{{ bridge.social_id }}</a>
+						{% endif %}
+					</div>
+
 					<hr class="generate-hr">
 					<hr class="generate-hr">
 
