@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 <head>
-<meta charset="UTF-8">
-<title>ARMY's Promise</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <title>ARMY's Promise</title>
 </head>
 
-<body class="center">
-<a href="https://www.oneinanarmy.org/" target="_blank"><img src="../static/images/oiaa-logo_purwht.png" style="width:135px;height:auto;border:0;"" title="One in an Army" alt="OIAA"></a>
-<font size="5">&nbsp;&nbsp; presents</font>
+<body>
+  <div class="container-fluid">
+    <div class="row d-flex flex-column align-items-center" style="margin-top: 5em;">
+      <div class="col-12 col-sm-7 col-md-6 col-lg-5 text-center">
 
-<br>
-<img src="../static/images/armypromise_logo.png" style="height:80px;height:auto;border:0;" title="Army Promise" alt="OIAA">
+        <a href="https://www.oneinanarmy.org/" target="_blank"><img src="../static/images/oiaa-logo_purwht.png" class="img-fluid" style="width: 135px;" title="One in an Army" alt="OIAA"></a>
+        <font size="5">&nbsp;&nbsp; presents</font>
 
-<h2>Let's write a song together!</h2>
-Write a verse to the tune of <a href="https://soundcloud.com/bangtan/firstjiminpresent">Jimin's Promise</a> and submit it! <br><br>
-We will approve your submission and <br>
-then you can see your lyrics in an ARMY's Promise song. <br><br>
-In the meantime you can click the generate button<br>
-to see a new ARMY's Promise song. <br><br>
+        <br>
+        <img src="../static/images/armypromise_logo.png" class="img-fluid" title="Army Promise" alt="OIAA">
 
-<button type="button" onclick="window.location.href='/web/submit_line'">Submit Lyrics</button>
-<button type="button" onclick="window.location.href='/web/generate'">Generate Song</button>
-<br>
+        <h2 style="margin-bottom: 1rem;">Let's write a song together!</h2>
+        Write a verse to the tune of <a href="https://soundcloud.com/bangtan/firstjiminpresent">Jimin's Promise</a> and submit it! <br><br>
+        We will approve your submission and <br>
+        then you can see your lyrics in an ARMY's Promise song. <br><br>
+        In the meantime you can click the generate button<br>
+        to see a new ARMY's Promise song. <br><br>
 
-<hr>
+        <button type="button" onclick="window.location.href='/web/submit_line'">Submit Lyrics</button>
+        <button type="button" onclick="window.location.href='/web/generate'">Generate Song</button>
+        <br>
 
-Also, support Jimin's Birthday Campaign <br>
-for a safe space for young refugees to rest, <br>
-learn, feel empowered and grow! <b>#HomeWithJimin</b> <br> <br>
+        <hr>
 
-<a href="https://zaatarngo.org/" target="_blank"><img src="../static/images/zaatar_logo.png" style="width:250px;height:auto;border:0;"" title="Za'atar NGO" alt="ZNGO"></a><br>
-<button type="button" class="donatebutton">Donate Here</button>
+        Also, support Jimin's Birthday Campaign <br>
+        for a safe space for young refugees to rest, <br>
+        learn, feel empowered and grow! <b>#HomeWithJimin</b> <br> <br>
 
+        <a href="https://zaatarngo.org/" target="_blank"><img src="../static/images/zaatar_logo.png" style="width:250px;height:auto;border:0;" title="Za'atar NGO" alt="ZNGO"></a><br>
+        <button type="button" class="donatebutton">Donate Here</button>
+
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

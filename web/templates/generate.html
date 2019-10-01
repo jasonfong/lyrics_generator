@@ -4,43 +4,51 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 <head>
-<meta charset="UTF-8">
-<title>ARMY's Song</title>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+	<title>ARMY's Song</title>
 </head>
 
-<body class="center">
-<a href="https://www.oneinanarmy.org/" target="_blank"><img src="../static/images/oiaa-logo_purwht.png" style="width:135px;height:auto;border:0;"" title="One in an Army" alt="OIAA"></a>
-<font size="5">&nbsp;&nbsp; presents</font>
-
-<h1>ARMY's Song</h1>
-
 <body>
+	<div class="container-fluid">
+		<div class="row d-flex flex-column align-items-center" style="margin-top: 5em;">
+			<div class="col-12 col-sm-7 col-md-6 col-lg-5 text-center">
 
-<font size="5">
-<div style="text-align: left; white-space: pre-line;">
-	[Verse 1]
-	{{ verse }}<br>
-	[Pre-Chorus 1]
-	{{ pre_chorus }}<br>
-	[Chorus 1]
-	{{ chorus }}<br>
-	[Pre-Chorus 2]
-	{{ pre_chorus }}<br>
-	[Chorus 2]
-	{{ chorus }}<br>
-	[Bridge]
-	{{ bridge }}<br>
-</div>
-</font>
+				<a href="https://www.oneinanarmy.org/" target="_blank"><img src="../static/images/oiaa-logo_purwht.png" class="img-fluid" style="width: 135px;" title="One in an Army" alt="OIAA"></a>
+				<font size="5">&nbsp;&nbsp; presents</font>
 
-<hr class="generate-hr">
-<hr class="generate-hr">
+				<h1>ARMY's Song</h1>
 
-<font size="4">Support Jimin's Birthday Campaign <b>#HomeWithJimin</b> <br> <br></font>
+				<body>
 
-<a href="https://zaatarngo.org/" target="_blank"><img src="../static/images/zaatar_logo.png" style="width:250px;height:auto;border:0;"" title="Za'atar NGO" alt="ZNGO"></a><br>
-<button type="button" class="donatebutton">Donate Here</button>
+					<font size="5">
+						<div style="text-align: left; white-space: pre-line;">
+							[Verse 1]
+							{{ verse }}<br>
+							[Pre-Chorus 1]
+							{{ pre_chorus }}<br>
+							[Chorus 1]
+							{{ chorus }}<br>
+							[Pre-Chorus 2]
+							{{ pre_chorus }}<br>
+							[Chorus 2]
+							{{ chorus }}<br>
+							[Bridge]
+							{{ bridge }}<br>
+						</div>
+					</font>
 
+					<hr class="generate-hr">
+					<hr class="generate-hr">
+
+					<font size="4">Support Jimin's Birthday Campaign <b>#HomeWithJimin</b> <br> <br></font>
+
+					<a href="https://zaatarngo.org/" target="_blank"><img src="../static/images/zaatar_logo.png" style="width:250px;height:auto;border:0;" title="Za'atar NGO" alt="ZNGO"></a><br>
+					<button type="button" class="donatebutton">Donate Here</button>
+
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
