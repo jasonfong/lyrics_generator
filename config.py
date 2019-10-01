@@ -6,6 +6,8 @@ SECRET_KEY = b'not_a_secret'
 BASIC_AUTH_USERNAME = 'admin'
 BASIC_AUTH_PASSWORD = 'abc123'
 
+RECAPTCHA_KEY = 'change_me'
+
 try:
     from config_local import *
 except ImportError:

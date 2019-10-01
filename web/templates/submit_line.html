@@ -89,6 +89,7 @@
               </div>
             </div>
           </div>
+          <input type="hidden" name="captcha" value="" id="captcha_token">
         </form>
 
         <div>
@@ -111,6 +112,15 @@
 
 </html>
 
+<script src="https://www.google.com/recaptcha/api.js?render=6LdDP7sUAAAAACPyoPkwO68FUyCK99LJfdTDysm2"></script>
+<script>
+  grecaptcha.ready(function() {
+    grecaptcha.execute('6LdDP7sUAAAAACPyoPkwO68FUyCK99LJfdTDysm2',
+                       {action: 'submit_line'}).then(function(token) {
+      document.getElementById("captcha_token").value = token;
+    });
+  });
+</script>
 <script type="text/javascript">
   function changeOrginalLyrics(option) {
     var originalLyricsDiv = document.getElementById("originalLyrics")

@@ -1,5 +1,7 @@
 from flask import (
-    Blueprint, jsonify, render_template, redirect, request, url_for)
+    Blueprint, current_app, jsonify, render_template, redirect, request, url_for)
+
+import requests
 
 from models.line import Line
 from generator.generator import LyricsGenerator
@@ -18,6 +20,18 @@ def index():
 def submit_line():
     if request.method == 'POST':
         data = request.form
+
+        recaptcha_token = data.get('captcha')
+        resp = requests.post(
+            url='https://www.google.com/recaptcha/api/siteverify',
+            data={
+                'secret': current_app.config['RECAPTCHA_KEY'],
+                'response': recaptcha_token,
+            }
+        )
+        if not resp.json()['success']:
+            return redirect(url_for('web.landing'))
+
         line_ref = Line(
             text=data.get('text'),
             line_type=data.get('line_type'),
