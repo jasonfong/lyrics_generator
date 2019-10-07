@@ -44,24 +44,32 @@
 							<a>@{{ pre_chorus.social_id }}</a>
 						{% elif pre_chorus.social_type == 'twitter' %}
 							<a>@{{ pre_chorus.social_id }}</a>
+						{% else %}
+							Anonymous
 						{% endif %}
 
 						{% if chorus.social_type == 'instagram' %}
 							<a>@{{ chorus.social_id }}</a>
 						{% elif chorus.social_type == 'twitter' %}
 							<a>@{{ chorus.social_id }}</a>
+						{% else %}
+							Anonymous
 						{% endif %}
 
 						{% if verse.social_type == 'instagram' %}
 							<a>@{{ verse.social_id }}</a>
 						{% elif verse.social_type == 'twitter' %}
 							<a>@{{ verse.social_id }}</a>
+						{% else %}
+							Anonymous
 						{% endif %}
 
 						{% if bridge.social_type == 'instagram' %}
 							<a>@{{ bridge.social_id }}</a>
 						{% elif bridge.social_type == 'twitter' %}
 							<a>@{{ bridge.social_id }}</a>
+						{% else %}
+							Anonymous
 						{% endif %}
 					</div>
 
