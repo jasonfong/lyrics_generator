@@ -25,6 +25,7 @@ def confirmation():
 
 
 @app.route('/info')
+@basic_auth.required
 def info():
     return jsonify(
         routes=[repr(item) for item in app.url_map.iter_rules()],

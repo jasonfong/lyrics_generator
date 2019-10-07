@@ -6,6 +6,8 @@ SECRET_KEY = b'not_a_secret'
 BASIC_AUTH_USERNAME = 'admin'
 BASIC_AUTH_PASSWORD = 'abc123'
 
+GENERATE_ENABLED = True
+
 RECAPTCHA_KEY = 'change_me'
 
 try:

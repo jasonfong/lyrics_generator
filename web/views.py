@@ -53,13 +53,11 @@ def submit_line():
         )
 
 
-@web_blueprint.route('/view_lines', methods=['GET'])
-def view_lines():
-    lines = Line.get_all()
-    return render_template('view_lines.html', lines=lines)
-
 @web_blueprint.route('/generate', methods=['GET'])
 def generate():
+    if not current_app.config['GENERATE_ENABLED']:
+        return redirect(url_for('web.landing'))
+
     generated = LyricsGenerator().generate()
 
     return render_template(
