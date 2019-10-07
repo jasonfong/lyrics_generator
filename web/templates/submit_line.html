@@ -77,10 +77,10 @@
                 </div>
                 <div class="form-group">
                   <select class="form-control" name="social_type" style="width: 30%">
-                    <option label=" "></option>
                     {% for choice in social_types %}
                     <option value="{{ choice }}">{{ choice }}</option>
                     {% endfor %}
+                    <option value="anonymous">anonymous</option>
                   </select>
                 </div>
                 <div class="form-group">

@@ -32,11 +32,17 @@ def submit_line():
         if not resp.json()['success']:
             return redirect(url_for('web.landing'))
 
+        social_id = data.get('social_id')
+        if social_id:
+            social_type = data.get('social_type')
+        else:
+            social_type = 'anonymous'
+
         line_ref = Line(
             text=data.get('text'),
             line_type=data.get('line_type'),
-            social_type=data.get('social_type'),
-            social_id=data.get('social_id'),
+            social_type=social_type,
+            social_id=social_id,
         )
         line_ref.save()
         return render_template('confirmation.html')

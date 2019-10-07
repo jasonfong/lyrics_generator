@@ -19,11 +19,11 @@ $( document ).ready(function() {
       });
   }
 
-  $( "#acceptedButton" ).click(function(){
+  $( "button.acceptedButton" ).click(function(){
     getData(this.dataset.id, "accepted");
   });
 
-  $( "#rejectedButton" ).click(function(){
+  $( "button.rejectedButton" ).click(function(){
     getData(this.dataset.id, "rejected");
   });
 });
