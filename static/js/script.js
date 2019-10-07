@@ -2,7 +2,7 @@ $( document ).ready(function() {
 
   function getData(id, status) {
     var data = {"line_id":id, "status":status};
-console.log(data)
+
     $.ajax( "/admin/moderate_action",
       {
         contentType: "application/json; charset=utf-8",
