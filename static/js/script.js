@@ -2,7 +2,7 @@ $( document ).ready(function() {
 
   function getData(id, status) {
     var data = {"line_id":id, "status":status};
-
+console.log(data)
     $.ajax( "/admin/moderate_action",
       {
         contentType: "application/json; charset=utf-8",
@@ -19,11 +19,11 @@ $( document ).ready(function() {
       });
   }
 
-  $( "#acceptedButton" ).click(function(){
+  $( ".acceptedButton" ).click(function(){
     getData(this.dataset.id, "accepted");
   });
 
-  $( "#rejectedButton" ).click(function(){
+  $( ".rejectedButton" ).click(function(){
     getData(this.dataset.id, "rejected");
   });
 });

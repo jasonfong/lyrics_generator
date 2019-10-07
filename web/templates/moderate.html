@@ -27,8 +27,8 @@
             <td>{{ line.line_type }}</td>
             <td>{{ line.status| default('None') }}</td>
             <td>
-                <button data-id="{{ line.id }}" id="acceptedButton">Accept</button>
-                <button data-id="{{ line.id }}" id="rejectedButton">Reject</button>
+                <button class="acceptedButton" data-id="{{ line.id }}">Accept</button>
+                <button class="rejectedButton" data-id="{{ line.id }}">Reject</button>
             </td>
         </tr>
         {% endfor %}
