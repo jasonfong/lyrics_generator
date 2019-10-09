@@ -38,13 +38,13 @@
           </iframe>
         </div>
 
-        <form action="/web/submit_line" method="POST" id="form1">
+        <form action="/web/submit_line" method="POST" id="form1" onsubmit="return checkForm(event)">
           <div class="container">
             <div align="left" class="row">
               <div class="col align-self-center">
                 <div>Select a verse to rewrite:</div>
                 <div class="form-group">
-                  <select class="form-control" name="line_type" onchange="changeOrginalLyrics(this)">
+                  <select id="line_type_select" class="form-control" name="line_type" onchange="changeOrginalLyrics(this)">
                     {% for choice in line_types %}
                     <option value="{{ choice }}">{{ choice }}</option>
                     {% endfor %}
@@ -92,6 +92,8 @@
           </div>
           <input type="hidden" name="captcha" value="" id="captcha_token">
         </form>
+
+        <div id="error-message" class="alert alert-danger" style="display: none;"></div>
 
         <div>
           <button type="submit" form="form1" value="Submit">Submit Lyrics</button>
@@ -147,5 +149,24 @@
     if (originalLyrics) {
       originalLyricsDiv.innerHTML = originalLyrics
     }
+  }
+
+  function checkForm(event) {
+    const errorDiv = document.getElementById('error-message');
+    const textarea = document.getElementById('exampleFormControlTextarea1');
+    const lineType = document.getElementById('line_type_select').value;
+
+    // Check for a newline character in textarea
+    if (textarea.value.indexOf("\n") === -1) {
+      errorDiv.innerHTML = 'Please enter a full ' + lineType + '.<br>You can write more than one line!';
+      errorDiv.style.display = 'block';
+      event.preventDefault();
+      return false;
+    } else {
+      errorDiv.style.display = 'none';
+    }
+
+    // Submit form
+    return true;
   }
 </script>
