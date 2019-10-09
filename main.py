@@ -1,6 +1,8 @@
 import json
 
 from flask import Flask, jsonify, redirect, render_template, request, url_for
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 from flask_basicauth import BasicAuth
 
 from models.line import Line
@@ -9,6 +11,13 @@ from web.views import web_blueprint
 
 app = Flask(__name__)
 app.config.from_object('config')
+
+# Rate limiting
+limiter = Limiter(
+    app,
+    key_func=get_remote_address,
+    default_limits=["1000 per day", "500 per hour"],
+)
 
 app.register_blueprint(web_blueprint, url_prefix='/web')
 
@@ -26,6 +35,7 @@ def confirmation():
 
 @app.route('/info')
 @basic_auth.required
+@limiter.exempt
 def info():
     return jsonify(
         routes=[repr(item) for item in app.url_map.iter_rules()],
@@ -33,6 +43,7 @@ def info():
 
 @app.route('/admin/moderate', methods=['GET'])
 @basic_auth.required
+@limiter.exempt
 def moderate():
     lines = Line.get_unapproved()
     return render_template('moderate.html', lines=lines)
@@ -40,6 +51,7 @@ def moderate():
 
 @app.route('/admin/moderate_action', methods=['POST'])
 @basic_auth.required
+@limiter.exempt
 def moderate_action():
     data = request.get_json()
 

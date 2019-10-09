@@ -1,5 +1,6 @@
 flask
 flask-basicauth
+flask-limiter
 google-cloud-storage
 google-cloud-firestore
 requests
