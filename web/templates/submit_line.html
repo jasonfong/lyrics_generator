@@ -44,7 +44,7 @@
               <div class="col align-self-center">
                 <div>Select a verse to rewrite:</div>
                 <div class="form-group">
-                  <select class="form-control" name="line_type" onchange="changeOrginalLyrics(this)">
+                  <select id="line_type_select" class="form-control" name="line_type" onchange="changeOrginalLyrics(this)">
                     {% for choice in line_types %}
                     <option value="{{ choice }}">{{ choice }}</option>
                     {% endfor %}
@@ -154,10 +154,11 @@
   function checkForm(event) {
     const errorDiv = document.getElementById('error-message');
     const textarea = document.getElementById('exampleFormControlTextarea1');
+    const lineType = document.getElementById('line_type_select').value;
 
     // Check for a newline character in textarea
     if (textarea.value.indexOf("\n") === -1) {
-      errorDiv.innerHTML = 'Please enter 2 verses in the text area above';
+      errorDiv.innerHTML = 'Please enter a full ' + lineType + '.<br>You can write more than one line!';
       errorDiv.style.display = 'block';
       event.preventDefault();
       return false;
