@@ -1,4 +1,5 @@
 from datetime import datetime
+import hashlib
 import uuid
 
 from google.cloud import firestore
@@ -10,17 +11,26 @@ SONG_TEMPLATE = '{verse}\n\n{pre_chorus}\n\n{chorus}\n\n{pre_chorus}\n\n{chorus}
 class Song:
     collection_name = 'songs'
     
-    def __init__(self, id=None, chorus_id=None, pre_chorus_id=None, verse_id=None,
+    def __init__(self, id, chorus_id=None, pre_chorus_id=None, verse_id=None,
                  bridge_id=None, created=None, modified=None):
         now = datetime.utcnow()
         self.db = firestore.Client()
-        self.id = id or str(uuid.uuid4())[:8]
+        self.id = id
         self.chorus_id = chorus_id
         self.pre_chorus_id = pre_chorus_id
         self.verse_id = verse_id
         self.bridge_id = bridge_id
         self.created = created or now
         self.modified = modified or now
+
+
+    @classmethod
+    def get_id(cls, chorus, pre_chorus, verse, bridge):
+        id_base = f'{chorus}|{pre_chorus}|{verse}|{bridge}'
+        hasher = hashlib.sha1()
+        hasher.update(id_base.encode('utf8'))
+        song_id = hasher.hexdigest()[:7]
+        return song_id
 
 
     @classmethod
@@ -31,7 +41,7 @@ class Song:
             for item in db.collection(cls.collection_name).where('id', '==', song_id).stream()
         ]
         if results:
-            return cls().populate(**(results[0].to_dict()))
+            return cls(song_id).populate(**(results[0].to_dict()))
         else:
             return None
 
@@ -40,7 +50,7 @@ class Song:
     def get_all(cls):
         db = firestore.Client()
         return [
-            cls().populate(**item.to_dict())
+            cls(item.id).populate(**item.to_dict())
             for item in db.collection(cls.collection_name).stream()
         ]
 

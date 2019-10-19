@@ -31,7 +31,15 @@ class LyricsGenerator:
         verse = self.get_verse() or Line()
         bridge = self.get_bridge() or Line()
 
+        song_id = Song.get_id(chorus, pre_chorus, verse, bridge)
+
+        existing_song = Song.get(song_id)
+
+        if existing_song:
+            return existing_song
+
         song = Song(
+            id=song_id,
             chorus_id=chorus.id,
             pre_chorus_id=pre_chorus.id,
             verse_id=verse.id,
