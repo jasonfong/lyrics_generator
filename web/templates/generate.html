@@ -13,14 +13,12 @@
 	<div class="container-fluid">
 		<div class="row d-flex flex-column align-items-center" style="margin-top: 5em;">
 			<div class="col-12 col-sm-7 col-md-6 col-lg-5 text-center">
-			<div id="song">
 				<a href="https://www.oneinanarmy.org/" target="_blank"><img src="/static/images/oiaa-logo_purwht.png" class="img-fluid" style="width: 135px;" title="One in an Army" alt="OIAA"></a>
 				<font size="5">&nbsp;&nbsp; presents</font>
 
 				<h1>ARMY's Song</h1>
 
 				<body>
-
 					<div style="font-size: 21px; letter-spacing: 1px; line-height: 1.2; text-align: left; white-space: pre-line;">
 						[Verse 1]
 						{{ verse.text }}<br>
@@ -70,15 +68,18 @@
 							Anonymous
 						{% endif %}
 					</div>
-				</div>
 					<hr class="generate-hr">
-						<div class="align-items-center" style="display: inline-block; padding: 10px 0px;">
-							<font style="font-family: 'DarkLarch'; color: #FFFFFF; font-size: 50px; margin: 0px 30px; vertical-align: top;">Share this!</font>
+					<div class="container">
+						<div class="align-items-center justify-content-center row" style="padding: 10px 0px;">
+							<font class="column" style="font-family: 'DarkLarch'; color: #FFFFFF; font-size: 50px; margin: 0px 30px;">Share this!</font>
 
-							<a onclick="shareOntwitter()" href="" target="_blank"><img src="/static/images/twitter_icon.png" style="margin: 0px 8px; width: 45px;" title="Share on Twitter" alt="Twitter"></a>
-							<a onclick="shareOnFB()" href="" target="_blank"><img src="/static/images/facebook_icon.png" style="margin: 0px 8px; width: 40px;" title="Share on Facebook" alt="Facebook"></a>
-							<a href="" target="_blank"><img src="/static/images/instagram_icon.png" style="margin: 0px 8px; width: 40px;" title="Share on Instagram" alt="Instagram"></a>
+							<div class="column">
+							<input type="image" onclick="shareOntwitter()" src="/static/images/twitter_icon.png" style="margin: 0px 8px; height: 45px; width: 45px;" value="Share on Twitter" />
+
+							<input type="image" onclick="shareOnFB()" src="/static/images/facebook_icon.png" style="margin: 0px 8px; height: 45px; width: 45px;" value="Share on Facebook" />
+							</div>
 						</div>
+					</div>
 					<hr class="generate-hr">
 
 					<font size="4">Support Jimin's Birthday Campaign <b>#HomeWithJimin</b> <br> <br></font>
@@ -94,17 +95,17 @@
 
 <script type="text/javascript">
 	function shareOnFB(){
-		var url = 'https://www.facebook.com/dialog/share?%20app_id=1162707167451931%20&display=popup&quote=ARMY%20Song%20for%20@OneInAnARMY%20%23HomeWithJimin%20%23ARMYsPromise&href=' + window.location.href;
+		var url = 'https://www.facebook.com/dialog/share?%20app_id=1162707167451931%20&display=popup&quote=Check%20out%20this%20song%20ARMYs%20made%20together%21%20%3C3%20@OneInAnARMY%20%23HomeWithJimin%20%23ARMYsPromise&href=' + window.location.href;
 
-		window.open(url, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+		window.location.href = url;
 
 		return false;
 	}
 
 	function shareOntwitter(){
-		var url = 'https://twitter.com/intent/tweet?url=' + window.location.href + '&text=ARMY%20Song%20for%20@OneInAnARMY%20%23HomeWithJimin%20%23ARMYsPromise';
+		var url = 'https://twitter.com/intent/tweet?url=' + window.location.href + '&text=Check%20out%20this%20song%20ARMYs%20made%20together%21%20%F0%9F%92%9C%20@OneInAnARMY%20%23HomeWithJimin%20%23ARMYsPromise';
 
-		window.open(url, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+		window.location.href = url;
 
 		return false;
 	}
