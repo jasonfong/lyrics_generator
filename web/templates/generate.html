@@ -6,6 +6,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+		<meta property="og:type" content="website" />
+		<meta property="og:description" content="Check out this song ARMYs made together! <3" />
 	<title>ARMY's Song</title>
 </head>
 
@@ -74,9 +76,9 @@
 							<font class="column" style="font-family: 'DarkLarch'; color: #FFFFFF; font-size: 50px; margin: 0px 30px;">Share this!</font>
 
 							<div class="column">
-							<input type="image" onclick="shareOntwitter()" src="/static/images/twitter_icon.png" style="margin: 0px 8px; height: 45px; width: 45px;" value="Share on Twitter" />
+								<input type="image" onclick="shareOntwitter()" src="/static/images/twitter_icon.png" style="margin: 0px 8px; height: 45px; width: 45px;" value="Share on Twitter" />
 
-							<input type="image" onclick="shareOnFB()" src="/static/images/facebook_icon.png" style="margin: 0px 8px; height: 45px; width: 45px;" value="Share on Facebook" />
+								<input type="image" onclick="shareOnFB()" src="/static/images/facebook_icon.png" style="margin: 0px 8px; height: 45px; width: 45px;" value="Share on Facebook" />
 							</div>
 						</div>
 					</div>
@@ -95,7 +97,7 @@
 
 <script type="text/javascript">
 	function shareOnFB(){
-		var url = 'https://www.facebook.com/dialog/share?%20app_id=1162707167451931%20&display=popup&quote=Check%20out%20this%20song%20ARMYs%20made%20together%21%20%3C3%20@OneInAnARMY%20%23HomeWithJimin%20%23ARMYsPromise&href=' + window.location.href;
+		var url = 'https://www.facebook.com/sharer/sharer.php?&u=' + window.location.href;
 
 		window.location.href = url;
 
